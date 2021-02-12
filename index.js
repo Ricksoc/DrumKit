@@ -7,15 +7,17 @@ for (let i = 0; i < document.querySelectorAll("button.drum").length; i++) {
       makeSound(buttonInnerHTML);
       buttonAnimation(buttonInnerHTML);
     });
-  }
+}
 
-  //Look for key press
+//Look for key press
 
-  document.addEventListener("keydown", function(event) {
-    let keyPressed = event.key;
+document.addEventListener("keydown", function (event) {
+  let keyPressed = event.key;
+  if (["w", "a", "s", "d", "j", "k", "l"].includes(keyPressed)) {
     makeSound(keyPressed);
     buttonAnimation(keyPressed);
-  });
+  }
+});
 
 function makeSound(activation) {
   switch (activation) {
@@ -57,7 +59,7 @@ function buttonAnimation(activation) {
   let activeButton = document.querySelector("." + activation);
   activeButton.classList.add("pressed");
 
-  setTimeout(function() {
+  setTimeout(function () {
     activeButton.classList.remove("pressed");
-  },100);
+  }, 100);
 }
